@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:provider_arc_by_package_creator/core/models/user.dart';
 import 'package:provider_arc_by_package_creator/core/services/api.dart';
 import 'package:provider_arc_by_package_creator/core/services/authentication_services.dart';
 
@@ -25,7 +26,7 @@ List<SingleChildWidget> dependentServices = [
   // at this case We'll ask for the Api, and return type will be an AuthenticationService
   // format : ProxyProvider(depentOn, returnType)
   ProxyProvider<Api, AuthenticationService>(
-    builder: (context, api, authenticationService) =>
+    update: (context, api, authenticationService) =>
         AuthenticationService(api: api),
   )
 ];
@@ -36,4 +37,13 @@ List<SingleChildWidget> dependentServices = [
 // data out. In our case the user information. If we don't provide it
 // here then all the models will have a user property on it. You could
 // also just add it to the BaseModel, but I digress.
-List<SingleChildCloneableWidget> uiConsumableProviders = [];
+// This will only work with listen set to false
+List<SingleChildWidget> uiConsumableProviders = [
+  // We'll inject the User stream so that we can consume it on any view that requires it
+  // Since it depends on the AuthenticationService we'll register a normal
+  // StreamProvider and get the AuthenticationService through the Provider.of call.
+  StreamProvider<User>(
+    create: (context) =>
+        Provider.of<AuthenticationService>(context, listen: false).user,
+  ),
+];
