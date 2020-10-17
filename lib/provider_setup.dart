@@ -1,4 +1,5 @@
 import 'package:provider/provider.dart';
+import 'package:provider_arc_by_package_creator/core/services/api.dart';
 
 // You can only inject a service that has already been supplied as a Provider
 // The order of registration matters!
@@ -12,7 +13,9 @@ List<SingleChildCloneableWidget> providers = [
 
 // 2. independentServices: These are classes/objects that do not depend on
 // any other services to execute their logic
-List<SingleChildCloneableWidget> independentServices = [];
+List<SingleChildCloneableWidget> independentServices = [
+  Provider.value(value: Api())
+];
 
 // 3. dependentServices: These are classes/object that depend on previously
 // registered services
