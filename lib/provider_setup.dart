@@ -1,4 +1,5 @@
 import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:provider_arc_by_package_creator/core/services/api.dart';
 import 'package:provider_arc_by_package_creator/core/services/authentication_services.dart';
 
@@ -6,7 +7,7 @@ import 'package:provider_arc_by_package_creator/core/services/authentication_ser
 // The order of registration matters!
 
 // 1. providers: All the providers for the entire app (line 26 of this file)
-List<SingleChildCloneableWidget> providers = [
+List<SingleChildWidget> providers = [
   ...independentServices,
   ...dependentServices,
   ...uiConsumableProviders,
@@ -14,14 +15,12 @@ List<SingleChildCloneableWidget> providers = [
 
 // 2. independentServices: These are classes/objects that do not depend on
 // any other services to execute their logic
-List<SingleChildCloneableWidget> independentServices = [
-  Provider.value(value: Api())
-];
+List<SingleChildWidget> independentServices = [Provider.value(value: Api())];
 
 // 3. dependentServices: These are classes/object that depend on previously
 // registered services
-List<SingleChildCloneableWidget> dependentServices = [
-  //ProxyProvider allow to your to specify what type of Provider your new one 
+List<SingleChildWidget> dependentServices = [
+  //ProxyProvider allow to your to specify what type of Provider your new one
   // depends on and provides it to you through the builder function
   // at this case We'll ask for the Api, and return type will be an AuthenticationService
   // format : ProxyProvider(depentOn, returnType)
