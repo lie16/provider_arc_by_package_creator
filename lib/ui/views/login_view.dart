@@ -7,7 +7,9 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<LoginViewModel>.value(
-      value: LoginViewModel(),
+      value: LoginViewModel(
+          // Inject authentication service setup in the provider_setup
+          authenticationService: Provider.of(context)),
       child: Consumer<LoginViewModel>(
         builder: (context, model, child) => Scaffold(
             backgroundColor: backgroundColor,
