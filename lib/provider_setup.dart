@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:provider_arc_by_package_creator/core/services/api.dart';
+import 'package:provider_arc_by_package_creator/core/services/authentication_services.dart';
 
 // You can only inject a service that has already been supplied as a Provider
 // The order of registration matters!
@@ -19,7 +20,16 @@ List<SingleChildCloneableWidget> independentServices = [
 
 // 3. dependentServices: These are classes/object that depend on previously
 // registered services
-List<SingleChildCloneableWidget> dependentServices = [];
+List<SingleChildCloneableWidget> dependentServices = [
+  //ProxyProvider allow to your to specify what type of Provider your new one 
+  // depends on and provides it to you through the builder function
+  // at this case We'll ask for the Api, and return type will be an AuthenticationService
+  // format : ProxyProvider(depentOn, returnType)
+  ProxyProvider<Api, AuthenticationService>(
+    builder: (context, api, authenticationService) =>
+        AuthenticationService(api: api),
+  )
+];
 
 // 4. uiConsumableProviders: These are values that you want to consume
 // directly in the UI. You can add values here if you would have to
