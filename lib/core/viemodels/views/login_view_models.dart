@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:provider_arc_by_package_creator/core/services/authentication_services.dart';
+import 'package:provider_arc_by_package_creator/core/viemodels/base_model.dart';
 
-class LoginViewModel extends ChangeNotifier {
+class LoginViewModel extends BaseModel {
   AuthenticationService _authenticationService;
 
   LoginViewModel({@required AuthenticationService authenticationService})
