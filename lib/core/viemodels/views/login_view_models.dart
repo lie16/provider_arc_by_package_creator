@@ -15,11 +15,12 @@ class LoginViewModel extends ChangeNotifier {
     return success;
   }
 
-  bool _busy = false;
-  bool get busy => _busy;
+  // bellow code moved to base_model.dart
+  // bool _busy = false;
+  // bool get busy => _busy;
 
-  void setBusy(bool value) {
-    _busy = value;
-    notifyListeners();
-  }
+  // void setBusy(bool value) {
+  //   _busy = value;
+  //   notifyListeners();
+  // }
 }
