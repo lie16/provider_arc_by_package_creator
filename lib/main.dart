@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //Inject provider to app
     return MultiProvider(
-      providers: [providers],
+      providers: providers,
       child: MaterialApp(
         title: 'Provider Arc',
         theme: ThemeData(
