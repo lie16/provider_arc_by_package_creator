@@ -17,11 +17,11 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     // return ChangeNotifierProvider<LoginViewModel>.value(
     // value: LoginViewModel(
-    // Inject authentication service setup in the provider_setup
-    //authenticationService: Provider.of(context)),
-    //child: Consumer<LoginViewModel>(
+    // child: Consumer<LoginViewModel>(
+    // bellow replacing commented code above
     return BaseWidget<LoginViewModel>(
-      //replacing above code
+      // Inject authentication service setup in the provider_setup
+      // authenticationService: Provider.of(context)),
       model: LoginViewModel(authenticationService: Provider.of(context)),
       // pass the LogineHeader as a prebuilt-static child/dalam child = tidak rebuild
       child: LoginHeader(controller: _controller),
