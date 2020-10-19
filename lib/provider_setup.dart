@@ -11,7 +11,7 @@ import 'package:provider_arc_by_package_creator/core/services/authentication_ser
 List<SingleChildWidget> providers = [
   ...independentServices,
   ...dependentServices,
-  ...uiConsumableProviders,
+  ...uiConsumableProviders
 ];
 
 // 2. independentServices: These are classes/objects that do not depend on
@@ -45,5 +45,5 @@ List<SingleChildWidget> uiConsumableProviders = [
   StreamProvider<User>(
     create: (context) =>
         Provider.of<AuthenticationService>(context, listen: false).user,
-  ),
+  )
 ];
