@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:provider_arc_by_package_creator/core/models/comment.dart';
+import 'package:provider_arc_by_package_creator/core/viemodels/widgets/comments_model.dart';
 import 'package:provider_arc_by_package_creator/ui/shared/app_colors.dart';
 import 'package:provider_arc_by_package_creator/ui/shared/ui_helpers.dart';
+import 'package:provider_arc_by_package_creator/ui/views/base_widget.dart';
 
 class Comments extends StatelessWidget {
   final int postId;
@@ -9,7 +12,20 @@ class Comments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return BaseWidget<CommentsModel>(
+        onModelReady: (model) => model.fetchComments(postId),
+        model: CommentsModel(api: Provider.of(context)),
+        builder: (context, model, child) => model.busy
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Expanded(
+                child: ListView.builder(
+                  itemCount: model.comments.length,
+                  itemBuilder: (context, index) =>
+                      CommentItem(model.comments[index]),
+                ),
+              ));
   }
 }
 
