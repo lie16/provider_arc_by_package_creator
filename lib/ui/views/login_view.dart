@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_arc_by_package_creator/core/constant/app_constant.dart';
 import 'package:provider_arc_by_package_creator/core/viemodels/views/login_view_models.dart';
-import 'package:provider_arc_by_package_creator/core/viemodels/widgets/base_widget.dart';
+import 'package:provider_arc_by_package_creator/ui/views/base_widget.dart';
 import 'package:provider_arc_by_package_creator/ui/shared/app_colors.dart';
 import 'package:provider_arc_by_package_creator/ui/widgets/login_header.dart';
 
@@ -13,6 +13,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // return ChangeNotifierProvider<LoginViewModel>.value(
@@ -30,6 +31,7 @@ class _LoginViewState extends State<LoginView> {
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              child,
               model.busy
                   ? CircularProgressIndicator()
                   : FlatButton(
