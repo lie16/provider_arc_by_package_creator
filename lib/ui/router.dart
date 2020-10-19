@@ -6,7 +6,7 @@ import 'package:provider_arc_by_package_creator/ui/views/home_view.dart';
 import 'package:provider_arc_by_package_creator/ui/views/login_view.dart';
 import 'package:provider_arc_by_package_creator/ui/views/post_view.dart';
 
-class Router {
+class Routers {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutePaths.Home:
