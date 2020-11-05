@@ -14,12 +14,15 @@ class AuthenticationService {
 
   Future<bool> login(int userId) async {
     var fetchedUser = await _api.getUserProfile(userId);
-
+    print('fetchedUser = ' + fetchedUser.toString());
+    print('fetchedUser = ' + fetchedUser.id.toString());
+    print('fetchedUser = ' + fetchedUser.name);
+    print('fetchedUser = ' + fetchedUser.username);
     var hasUser = fetchedUser != null;
     if (hasUser) {
       _userController.add(fetchedUser);
     }
-
+    print('hasUser = ' + hasUser.toString());
     return hasUser;
   }
 }

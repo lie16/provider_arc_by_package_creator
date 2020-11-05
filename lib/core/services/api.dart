@@ -14,7 +14,8 @@ class Api {
   Future<User> getUserProfile(int userId) async {
     // Get user profile for id
     var response = await client.get('$endpoint/users/$userId');
-
+    print('getUserProfile = ' + response.body);
+    print('getUserProfile = ' + json.decode(response.body).toString());
     // Convert and return
     return User.fromJson(json.decode(response.body));
   }
